@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
     private float _vertical;
     [SerializeField]
     private Vector2 _direction;
+    
 
     private void Update()
     {
         Move();
 
     }
-
+    
 
     private void Move()
 
