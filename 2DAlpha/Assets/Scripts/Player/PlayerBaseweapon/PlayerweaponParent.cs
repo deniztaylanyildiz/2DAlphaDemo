@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class PlayerweaponParent : MonoBehaviour
@@ -11,9 +12,12 @@ public class PlayerweaponParent : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     private Transform _bullettransform;
-    private bool _isCantShoot;
+    [SerializeField]
+    private bool _isCantShoot=false;
     [SerializeField]
     private float _shootTimer;
+    public float timer;
+
     private void Awake()
     {
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -25,7 +29,7 @@ public class PlayerweaponParent : MonoBehaviour
     {
         TakingAim();
         shoot();
-        MyTimer(0);
+        MyTimer();
     }
 
     void TakingAim()
@@ -37,28 +41,33 @@ public class PlayerweaponParent : MonoBehaviour
     }
     void shoot()
     {
-        if (Input.GetMouseButtonDown(0)&&_isCantShoot==false) {
-            Instantiate(_bullet,_bullettransform.position,Quaternion.identity);
-           _isCantShoot = true;
+        if (Input.GetMouseButtonDown(0) && _isCantShoot == false)
+        {
+            Instantiate(_bullet, _bullettransform.position, Quaternion.identity);
+            _isCantShoot = true;
 
-
-        
-        
+            
         }
-
+       
+            
         
 
     }
-    void MyTimer(float timer)
+    void MyTimer()
     {
-        timer += Time.deltaTime;
+      
+        if (_isCantShoot) { 
+            timer += Time.deltaTime;
+            Debug.Log("2");
+        }
         if (_shootTimer <= timer)
         {
-            timer = 0;
             _isCantShoot = false;
+            timer = 0;
+
 
         }
-
+      
 
     }
 }

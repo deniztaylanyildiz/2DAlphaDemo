@@ -660,8 +660,10 @@ MonoBehaviour:
   _mausepos: {x: 0, y: 0, z: 0}
   _mainCamera: {fileID: 519420031}
   _bullet: {fileID: 6260856489090302821, guid: fb7186408d5ffad43902118d1fa306c2, type: 3}
-  _bullettransform: {fileID: 7993018286969260645, guid: fb7186408d5ffad43902118d1fa306c2, type: 3}
-  _shootTimer: 0
+  _bullettransform: {fileID: 950712208}
+  _isCantShoot: 0
+  _shootTimer: 0.66
+  timer: 0
 --- !u!212 &1853323529
 SpriteRenderer:
   m_ObjectHideFlags: 0
